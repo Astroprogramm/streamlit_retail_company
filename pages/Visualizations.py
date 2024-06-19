@@ -13,13 +13,13 @@ st.set_page_config(
 
 fig = plt.figure(figsize=(16,7))
 
-features = pd.read_csv('features_Delta.csv')
-sales = pd.read_csv('sales_Delta.csv')
-stores = pd.read_csv('stores_Delta.csv')
+features = pd.read_csv('data/features_Delta.csv')
+sales = pd.read_csv('data/sales_Delta.csv')
+stores = pd.read_csv('data/stores_Delta.csv')
 
 dataset = features.merge(sales, how='inner', on=['Store','Date', 'IsHoliday'])
 dataset = dataset.merge(stores, how='inner', on='Store')
-#dataset['Date']=pd.to_datetime(dataset['Date'], format='%d/%m/%Y')
+dataset['Date']=pd.to_datetime(dataset['Date'], format='%Y/%m/%d')
 
 sns.lineplot(data = dataset[dataset['IsHoliday']==True], x='Date', y='Weekly_Sales')
 
