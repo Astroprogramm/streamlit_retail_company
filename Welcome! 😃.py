@@ -8,7 +8,12 @@ st.set_page_config(layout="wide")
 st.title("Retail Company Data")
 st.markdown("Here you can review the data base created after ETL process/Aquí puedes consultar la base de datos creada después del proceso de ETL")
 
-features = pd.read_csv('data/Features data set.csv')
+features = pd.read_csv('features_Delta.csv')
+sales = pd.read_csv('sales_Delta.csv')
+stores = pd.read_csv('stores_Delta.csv')
+
+dataset = features.merge(sales, how='inner', on=['Store','Date', 'IsHoliday'])
+dataset = dataset.merge(stores, how='inner', on='Store')
 
 # Numero de entradas por hoja
 N = 10
@@ -20,7 +25,7 @@ if 'page_number' not in st.session_state:
     st.session_state['page_number'] = 0
 
 
-last_page = (len(features) // N )-1
+last_page = (len(dataset) // N )-1
 
 col1, col2 = st.columns(2)
 
@@ -54,6 +59,6 @@ end_idx = (1 + st.session_state['page_number']) * N
 
 
 # Index into the sub dataframe
-sub_df = features.iloc[start_idx:end_idx]
+sub_df = dataset.iloc[start_idx:end_idx]
 st.write(sub_df)
 
