@@ -8,9 +8,9 @@ st.set_page_config(layout="wide")
 st.title("Retail Company Data")
 st.markdown("Here you can review the data base created after ETL process/Aquí puedes consultar la base de datos creada después del proceso de ETL")
 
-features = pd.read_csv('features_Delta.csv')
-sales = pd.read_csv('sales_Delta.csv')
-stores = pd.read_csv('stores_Delta.csv')
+features = pd.read_csv('data/features_Delta.csv')
+sales = pd.read_csv('data/sales_Delta.csv')
+stores = pd.read_csv('data/stores_Delta.csv')
 
 dataset = features.merge(sales, how='inner', on=['Store','Date', 'IsHoliday'])
 dataset = dataset.merge(stores, how='inner', on='Store')
