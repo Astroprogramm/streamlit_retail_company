@@ -19,6 +19,7 @@ stores = pd.read_csv('data/stores_Delta.csv')
 
 dataset = features.merge(sales, how='inner', on=['Store','Date', 'IsHoliday'])
 dataset = dataset.merge(stores, how='inner', on='Store')
+
 dataset['Date']=pd.to_datetime(dataset['Date'], format='%Y/%m/%d')
 
 sns.lineplot(data = dataset[dataset['IsHoliday']==True], x='Date', y='Weekly_Sales')
@@ -39,3 +40,6 @@ plt.legend()
 plt.grid()
 
 st.pyplot(fig)
+
+st.text('En: We can see an improvement on the mean weekly sales after implementation of MarkDowns  \n  Es: Podemos observar una mejoría en el promedio de ventas semanales después de la implementación de MarkDowns')
+
