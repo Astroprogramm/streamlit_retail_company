@@ -41,5 +41,5 @@ plt.grid()
 
 st.pyplot(fig)
 
-st.text('En: We can see an improvement on the mean weekly sales after implementation of MarkDowns  \n  Es: Podemos observar una mejoría en el promedio de ventas semanales después de la implementación de MarkDowns')
+st.text('En: We can see an improvement on the mean weekly sales after implementation of MarkDowns  \nEs: Podemos observar una mejoría en el promedio de ventas semanales después de la implementación de MarkDowns')
 
