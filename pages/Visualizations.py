@@ -20,7 +20,7 @@ stores = pd.read_csv('data/stores_Delta.csv')
 dataset = features.merge(sales, how='inner', on=['Store','Date', 'IsHoliday'])
 dataset = dataset.merge(stores, how='inner', on='Store')
 
-dataset['Date']=pd.to_datetime(dataset['Date'], format='%Y/%m/%d')
+dataset['Date']=pd.to_datetime(dataset['Date'], format='%Y-%m-%d')
 
 sns.lineplot(data = dataset[dataset['IsHoliday']==True], x='Date', y='Weekly_Sales')
 
